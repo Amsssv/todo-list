@@ -1,30 +1,40 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useContext, useState } from "react";
 import TextField from "../text-field/text-field";
 import "./todo-form-styles.css";
+import Context from "../../app";
 
 const TodoForm = () => {
-  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
 
+  const { addTodo } = useContext(Context);
+
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    addTodo(title, description);
+  };
+
   return (
-    <form className="todo-form" onSubmit={(e) => e.preventDefault()}>
+    <form className="todo-form" onSubmit={handleSubmit}>
       <TextField
         id={"1"}
         placeholder={"name"}
         type={"text"}
-        value={name}
+        value={title}
         name={"name"}
-        onChange={setName}
+        onChange={setTitle}
       />
-      <TextField
-        id={"2"}
-        placeholder={"description"}
-        type={"text"}
-        value={description}
-        name={"description"}
-        onChange={setDescription}
-      />
+      <div className="text-aria__line">
+        <textarea
+          className="text-aria"
+          name="text"
+          rows={4}
+          placeholder="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
       <TextField
         id={"3"}
         placeholder={"status"}

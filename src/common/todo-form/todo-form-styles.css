@@ -16,3 +16,27 @@
     margin: 10px;
     background-color: black;
 }
+
+.text-aria__line{
+    position: relative;
+    width: 100%;
+    margin: 0 32px;
+}
+
+.text-aria{
+    font-family: Arial ;
+    width: 90%;
+    padding: 12px;
+    border:solid rgb(203 213 225);
+    border-radius: 6px;
+    color: rgb(15 23 42);
+}
+
+.text-aria:focus{
+    border: solid rgb(107 114 128);
+    z-index: 10;
+}
+
+.text-aria::placeholder{
+    color: rgb(107 114 128);
+}

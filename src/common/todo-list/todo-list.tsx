@@ -2,11 +2,19 @@ import React, { FC } from "react";
 import TodoItem from "../todo-item/todo-item";
 import "./todo-list-styles.css";
 
-const TodoList: FC = () => {
+const TodoList: FC<{ todos: Array<any> }> = ({ todos }) => {
   return (
     <div className="todo-list">
-      <TodoItem />
-      <TodoItem />
+      {todos.map((elem) => {
+        return (
+          <TodoItem
+            key={elem.id}
+            id={elem.id}
+            title={elem.title}
+            description={elem.description}
+          />
+        );
+      })}
     </div>
   );
 };
