@@ -1,0 +1,18 @@
+
+.todo-form {
+    max-width: 75%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.save-button {
+    cursor: pointer;
+    border-radius: 12px;
+    color: white;
+    padding: 12px 32px;
+    margin: 10px;
+    background-color: black;
+}
