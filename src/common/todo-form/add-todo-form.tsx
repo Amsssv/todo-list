@@ -1,51 +1,43 @@
 import React, { SyntheticEvent, useContext, useState } from "react";
-import TextField from "../text-field/text-field";
 import "./todo-form-styles.css";
 import Context from "../../app";
 
-const TodoForm = () => {
+const AddTodoForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
-
-  const { addTodo } = useContext(Context);
+  const { addTodoItem } = useContext(Context);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    addTodo(title, description);
+    addTodoItem(title, description);
+    setTitle("");
+    setDescription("");
   };
 
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
-      <TextField
-        id={"1"}
-        placeholder={"name"}
-        type={"text"}
-        value={title}
-        name={"name"}
-        onChange={setTitle}
-      />
+      <div className="field__line">
+        <input
+          type="text"
+          value={title}
+          onChange={({ target: { value } }) => setTitle(value)}
+          autoComplete="off"
+          className="field__input"
+          placeholder="title"
+        />
+      </div>
       <div className="text-aria__line">
         <textarea
           className="text-aria"
-          name="text"
           rows={4}
           placeholder="description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={({ target: { value } }) => setDescription(value)}
         />
       </div>
-      <TextField
-        id={"3"}
-        placeholder={"status"}
-        type={"text"}
-        value={status}
-        name={"status"}
-        onChange={setStatus}
-      />
       <button className="save-button">Save</button>
     </form>
   );
 };
 
-export default TodoForm;
+export default AddTodoForm;

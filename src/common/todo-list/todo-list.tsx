@@ -9,6 +9,7 @@ const TodoList: FC<{ todos: Array<any> }> = ({ todos }) => {
         return (
           <TodoItem
             key={elem.id}
+            todo={elem}
             id={elem.id}
             title={elem.title}
             description={elem.description}
