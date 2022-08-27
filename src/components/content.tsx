@@ -1,5 +1,5 @@
 import React from "react";
-import { useTodos } from "../../store";
+import { useTodos } from "../store";
 import AddTodoForm from "./add-todo-form";
 import EditTodoForm from "./edit-todo-form";
 

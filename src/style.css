@@ -1,0 +1,146 @@
+html,
+body,
+#root,
+.App {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.site-content {
+  overflow: auto;
+}
+
+.container {
+  max-width: 85%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+  margin: 10px 32px;
+}
+
+.input-group__input{
+  width: 90%;
+  padding: 12px;
+  border:solid rgb(203 213 225);
+  border-radius: 6px;
+  color: rgb(15 23 42);
+}
+
+.input-group__input:focus{
+  border: solid rgb(107 114 128);
+  z-index: 10;
+}
+
+.input-group__input::placeholder{
+  color: rgb(107 114 128);
+}
+
+.text-area-group{
+  position: relative;
+  width: 100%;
+  margin: 0 32px;
+}
+
+.text-area-group__textarea{
+  font-family: Arial sans-serif;
+  width: 90%;
+  padding: 12px;
+  border:solid rgb(203 213 225);
+  border-radius: 6px;
+  color: rgb(15 23 42);
+}
+
+.text-area-group__textarea:focus{
+  border: solid rgb(107 114 128);
+  z-index: 10;
+}
+
+.text-area-group__textarea::placeholder{
+  color: rgb(107 114 128);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-item{
+  padding: 10px;
+  margin: 10px;
+  max-width: 90%;
+  border: solid #000000;
+  border-radius: 20px;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-title{
+  flex: 0 1 60%;
+  font-size: 18px;
+  font-family: Roboto sans-serif;
+  margin: 10px 10px 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  max-width: 320px
+}
+
+.todo-subtitle{
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.todo-copy{
+  font-family: Roboto sans-serif;
+  margin: 10px 10px 5px;
+}
+
+.todo-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.button:not(:last-child) {
+  margin: 0 20px 0 0;
+}
+.edit-button {
+  background-color: #ffd97d;
+}
+
+.delete-button{
+  background-color: #ff9b85;
+}
+
+.start-button{
+  background-color: #85a4ff;
+}
+
+.save-button {
+  padding: 10px 32px;
+  background-color: #85ff99;
+}

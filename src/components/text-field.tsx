@@ -9,14 +9,15 @@ interface Props {
 
 const TextField: FC<Props> = ({ name, value, placeholder, onChange }) => {
   return (
-    <div className="field__line">
+    <div className="input-group">
       <input
         type="text"
         name={name}
+        required
         value={value}
         onChange={(e) => onChange(e)}
         autoComplete="off"
-        className="field__input"
+        className="input-group__input"
         placeholder={placeholder}
       />
     </div>

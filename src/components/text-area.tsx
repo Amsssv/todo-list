@@ -9,11 +9,12 @@ interface Props {
 
 const TextArea: FC<Props> = ({ name, value, placeholder, onChange }) => {
   return (
-    <div className="text-aria__line">
+    <div className="text-area-group">
       <textarea
-        className="text-aria"
+        className="text-area-group__textarea"
         name={name}
-        rows={4}
+        required
+        rows={5}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e)}

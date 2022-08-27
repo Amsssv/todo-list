@@ -1,9 +1,8 @@
 import React, { FC, useState } from "react";
-import TodoItem from "../todo-item/todo-item";
-import "./todo-list-styles.css";
-import { useTodos } from "../../store";
-import { Todo } from "../../store/types";
-import TextField from "../text-field";
+import TodoItem from "./todo-item";
+import { useTodos } from "../store";
+import { Todo } from "../store/types";
+import TextField from "./text-field";
 
 const TodoList: FC = () => {
   const {
@@ -19,7 +18,7 @@ const TodoList: FC = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <TextField
         name="search"
         placeholder="search"
@@ -40,7 +39,7 @@ const TodoList: FC = () => {
             />
           ))}
       </div>
-    </>
+    </div>
   );
 };
 

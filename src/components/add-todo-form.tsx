@@ -1,9 +1,8 @@
 import React, { SyntheticEvent } from "react";
-import "./todo-form-styles.css";
-import TextField from "../text-field";
-import TextArea from "../text-area";
-import { useTodos } from "../../store";
-import useForm from "../../hooks/useForm";
+import TextField from "./text-field";
+import TextArea from "./text-area";
+import { useTodos } from "../store";
+import useForm from "../hooks/useForm";
 
 const AddTodoForm = () => {
   const { addTodoItem } = useTodos();
@@ -16,7 +15,7 @@ const AddTodoForm = () => {
   };
 
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+    <form className="container" onSubmit={handleSubmit}>
       <TextField
         value={title}
         name="title"
@@ -29,7 +28,7 @@ const AddTodoForm = () => {
         placeholder="description"
         onChange={handleInputChange}
       />
-      <button type="submit" className="save-button">
+      <button type="submit" className="button save-button">
         Save
       </button>
     </form>

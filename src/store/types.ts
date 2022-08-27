@@ -4,6 +4,7 @@ export enum ActionTypes {
   EDIT_ITEM,
   SAVE_EDITED_ITEM,
   CANCEL_EDITED_ITEM,
+  SET_STATUS,
 }
 
 export type Action = {
@@ -15,6 +16,7 @@ export interface Todo {
   id: number;
   title: string;
   description: string;
+  status: string;
 }
 
 export type State = {

@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  ReactChildren,
-  ReactNode,
-  useContext,
-  useEffect,
-  useReducer,
-} from "react";
+import React, { FC, ReactNode, useContext, useEffect, useReducer } from "react";
 import { State, ActionTypes, Action } from "./types";
 
 const initialState: State = {
@@ -46,6 +39,17 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         editingId: null,
+      };
+    case ActionTypes.SET_STATUS:
+      return {
+        ...state,
+        items: state.items.reduce(
+          (acc, item) =>
+            item.id === action.payload.id
+              ? [...acc, action.payload]
+              : [...acc, item],
+          []
+        ),
       };
     default:
       return state;
@@ -113,6 +117,18 @@ const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
     });
   };
 
+  const setTodoStatus = (
+    id: number,
+    title: string,
+    description: string,
+    status: string
+  ) => {
+    dispatch({
+      type: ActionTypes.SET_STATUS,
+      payload: { id, title, description, status },
+    });
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -122,6 +138,7 @@ const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
         editTodoItem,
         saveEditedTodoItem,
         cancelEditedTodoItem,
+        setTodoStatus,
       }}
     >
       {children}

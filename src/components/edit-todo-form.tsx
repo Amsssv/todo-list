@@ -1,9 +1,8 @@
 import React, { FC, SyntheticEvent } from "react";
-import "./todo-form-styles.css";
-import TextField from "../text-field";
-import TextArea from "../text-area";
-import { useTodos } from "../../store";
-import useForm from "../../hooks/useForm";
+import TextField from "./text-field";
+import TextArea from "./text-area";
+import { useTodos } from "../store";
+import useForm from "../hooks/useForm";
 
 interface Props {
   id: number;
@@ -27,7 +26,7 @@ const EditTodoForm: FC<Props> = ({ id }) => {
   };
 
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+    <form className="container" onSubmit={handleSubmit}>
       <TextField
         value={title}
         name="title"
@@ -42,7 +41,7 @@ const EditTodoForm: FC<Props> = ({ id }) => {
       />
       <div className="todo-actions">
         <button type="submit" className="button edit-button">
-          Edit
+          Update
         </button>
         <button className="button delete-button" onClick={() => {}}>
           Cancel
