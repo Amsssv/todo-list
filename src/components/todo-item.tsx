@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { useTodos } from "../store";
 
 interface Props {
@@ -38,7 +38,7 @@ const TodoItem: FC<Props> = ({
   let editButton;
   let cardStatus;
   if (status === themes.pending) {
-    let statusButton = (
+    statusButton = (
       <button className="button start-button" onClick={handleStart}>
         Start
       </button>
