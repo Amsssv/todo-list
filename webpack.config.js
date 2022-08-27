@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts|tsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -22,7 +22,6 @@ module.exports = {
               "@babel/preset-typescript",
               "@babel/preset-react",
             ],
-            plugins: ["@babel/plugin-proposal-object-rest-spread"],
           },
         },
       },
@@ -32,12 +31,8 @@ module.exports = {
       },
     ],
   },
-
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      "@todo-list": path.resolve(__dirname, "src"),
-    },
   },
   plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
 };
