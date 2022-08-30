@@ -9,7 +9,6 @@ interface Props {
   status: string;
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
-  onChange: (id: number, status: TodoStatus) => void;
 }
 
 const themes = {
@@ -43,7 +42,6 @@ const TodoItem: FC<Props> = ({
   status = themes.pending,
   onEdit,
   onDelete,
-  onChange,
 }) => {
   const { setTodoStatus } = useTodos();
 

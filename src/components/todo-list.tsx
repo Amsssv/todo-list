@@ -43,7 +43,6 @@ const TodoList: FC = () => {
               {...item}
               onEdit={editTodoItem}
               onDelete={removeTodoItem}
-              onChange={() => console.log("ddd")}
             />
           ))}
       </div>
