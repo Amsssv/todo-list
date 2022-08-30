@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useTodos } from "../store";
-import { TodoStatus } from "../store/types";
+import { Status } from "../store/types";
+import Button from "./button";
 
 interface Props {
   id: number;
@@ -11,105 +12,59 @@ interface Props {
   onDelete: (id: number) => void;
 }
 
-const themes = {
-  pending: "none",
-  working: "rgba(133, 164, 255, 0.5)",
-  finished: "rgba(133, 255, 153, 0.5)",
-};
-
-const getNewStatus = (status?: TodoStatus): TodoStatus => {
-  switch (status) {
-    case "pending":
-      return "working";
-    case "working":
-      return "finished";
-    case "finished":
-      return "finished";
-    default:
-      return "pending";
-  }
-};
-
-const changeButtonsTexts = {
-  pending: "To work",
-  working: "To Finish",
-};
-
 const TodoItem: FC<Props> = ({
   id,
   title,
   description,
-  status = themes.pending,
+  status = Status.PENDING,
   onEdit,
   onDelete,
 }) => {
-  const { setTodoStatus } = useTodos();
+  const {
+    state: { editingId },
+    setTodoStatus,
+  } = useTodos();
 
   const handleStart = () => {
-    setTodoStatus(id, title, description, themes.working);
+    setTodoStatus(id, title, description, Status.WORKING);
   };
 
   const handleFinish = () => {
-    setTodoStatus(id, title, description, themes.finished);
+    setTodoStatus(id, title, description, Status.FINISHED);
   };
-
-  let statusButton;
-  let editButton;
-  let cardStatus;
-  if (status === themes.pending) {
-    statusButton = (
-      <button className="button start-button" onClick={handleStart}>
-        Start
-      </button>
-    );
-    editButton = (
-      <button className="button edit-button" onClick={() => onEdit(id)}>
-        Edit
-      </button>
-    );
-    cardStatus = (
-      <span
-        className="todo-subtitle"
-        style={{ backgroundColor: "rgb(203 213 225)" }}
-      >
-        Not Started
-      </span>
-    );
-  } else if (status === themes.working) {
-    statusButton = (
-      <button className="button save-button" onClick={handleFinish}>
-        Finish
-      </button>
-    );
-    cardStatus = (
-      <span className="todo-subtitle" style={{ backgroundColor: status }}>
-        In progress
-      </span>
-    );
-  } else {
-    statusButton = null;
-    editButton = null;
-    cardStatus = (
-      <span className="todo-subtitle" style={{ backgroundColor: status }}>
-        Closed
-      </span>
-    );
-  }
-
+  const color =
+    status === Status.WORKING
+      ? "blue"
+      : status === Status.FINISHED
+      ? "green"
+      : null;
+  const todoItemClass = `todo__item todo__item--${color}`;
   return (
-    <div
-      className="todo-item"
-      style={{ borderColor: status, boxShadow: `6px 6px 10px 1px ${status}` }}
-    >
+    <div className={todoItemClass}>
       <div className="todo-header">
         <h2 className="todo-title">{title}</h2>
-        {cardStatus}
       </div>
       <p className="todo-copy">{description}</p>
       <div className="todo-actions">
-        {statusButton}
-        {editButton}
-        <button className="button delete-button" onClick={() => onDelete(id)}>
+        {status === Status.PENDING ? (
+          <>
+            <Button color={"blue"} submit={false} onClick={handleStart}>
+              To work
+            </Button>
+            <Button color={"yellow"} submit={false} onClick={() => onEdit(id)}>
+              Edit
+            </Button>
+          </>
+        ) : status === Status.WORKING ? (
+          <Button color={"green"} submit={false} onClick={handleFinish}>
+            Finish
+          </Button>
+        ) : null}
+        <button
+          className="button button--red"
+          onClick={() => onDelete(id)}
+          {...(editingId == id && { disabled: true })}
+        >
           Delete
         </button>
       </div>

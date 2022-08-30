@@ -3,6 +3,7 @@ import TextField from "./text-field";
 import TextArea from "./text-area";
 import { useTodos } from "../store";
 import useForm from "../hooks/useForm";
+import Button from "./button";
 
 interface Props {
   id: number;
@@ -40,12 +41,12 @@ const EditTodoForm: FC<Props> = ({ id }) => {
         onChange={handleInputChange}
       />
       <div className="todo-actions">
-        <button type="submit" className="button edit-button">
+        <Button submit={true} color="yellow">
           Update
-        </button>
-        <button className="button delete-button" onClick={() => {}}>
+        </Button>
+        <Button color="red" onClick={() => {}}>
           Cancel
-        </button>
+        </Button>
       </div>
     </form>
   );

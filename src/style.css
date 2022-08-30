@@ -80,11 +80,21 @@ body,
 
 }
 
-.todo-item{
+.todo__item{
   padding: 10px;
   margin: 10px;
   border: solid #000000;
   border-radius: 20px;
+}
+
+.todo__item--blue{
+  border-color: rgba(133, 164, 255, 0.5);
+  box-shadow: 6px 6px 10px 1px rgba(133, 164, 255, 0.5);
+}
+
+.todo__item--green{
+  border-color: rgba(133, 255, 153, 0.5);
+  box-shadow: 6px 6px 10px 1px rgba(133, 255, 153, 0.5);
 }
 
 .todo-header {
@@ -110,6 +120,7 @@ body,
 .todo-subtitle{
   padding: 5px 10px;
   border-radius: 10px;
+  background-color: rgb(203 213 225);
 }
 
 .todo-copy{
@@ -135,19 +146,19 @@ body,
 .button:not(:last-child) {
   margin: 0 20px 0 0;
 }
-.edit-button {
+.button--yellow {
   background-color: #ffd97d;
 }
 
-.delete-button{
+.button--red {
   background-color: #ff9b85;
 }
 
-.start-button{
+.button--blue {
   background-color: #85a4ff;
 }
 
-.save-button {
+.button--green {
   padding: 10px 32px;
   background-color: #85ff99;
 }

@@ -3,6 +3,7 @@ import TextField from "./text-field";
 import TextArea from "./text-area";
 import { useTodos } from "../store";
 import useForm from "../hooks/useForm";
+import Button from "./button";
 
 const AddTodoForm = () => {
   const { addTodoItem } = useTodos();
@@ -29,9 +30,9 @@ const AddTodoForm = () => {
         placeholder="description"
         onChange={handleInputChange}
       />
-      <button type="submit" className="button save-button">
+      <Button color="green" submit={true}>
         Save
-      </button>
+      </Button>
     </form>
   );
 };

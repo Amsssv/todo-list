@@ -24,4 +24,8 @@ export type State = {
   editingId: number | null;
 };
 
-export type TodoStatus = "pending" | "working" | "finished";
+export enum Status {
+  PENDING,
+  WORKING,
+  FINISHED,
+}

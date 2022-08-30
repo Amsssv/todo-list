@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from "react";
 
 interface CommonProps {
   children: ReactNode;
-  color?: "grey" | "blue" | "red";
+  color?: "green" | "blue" | "yellow" | "red";
 }
 
 type ConditionalProps =

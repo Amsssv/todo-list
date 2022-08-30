@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 import TodoItem from "./todo-item";
 import { useTodos } from "../store";
 import { Todo } from "../store/types";
-import TextField from "./text-field";
 import useDebouncedCallback from "../hooks/useDebouncedCallback";
 
 const TodoList: FC = () => {
