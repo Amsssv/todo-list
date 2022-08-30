@@ -9,7 +9,7 @@ interface Props {
   id: number;
 }
 
-const EditTodoForm: FC<Props> = ({ id }) => {
+const EditTodoForm: FC<Props> = ({ id}) => {
   const {
     state: { items },
     saveEditedTodoItem,

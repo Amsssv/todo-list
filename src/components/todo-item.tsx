@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { useTodos } from "../store";
 import { Status } from "../store/types";
 import Button from "./button";
