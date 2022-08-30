@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { useTodos } from "../store";
+import { TodoStatus } from "../store/types";
 
 interface Props {
   id: number;
@@ -8,12 +9,31 @@ interface Props {
   status: string;
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
+  onChange: (id: number, status: TodoStatus) => void;
 }
 
 const themes = {
   pending: "none",
   working: "rgba(133, 164, 255, 0.5)",
   finished: "rgba(133, 255, 153, 0.5)",
+};
+
+const getNewStatus = (status?: TodoStatus): TodoStatus => {
+  switch (status) {
+    case "pending":
+      return "working";
+    case "working":
+      return "finished";
+    case "finished":
+      return "finished";
+    default:
+      return "pending";
+  }
+};
+
+const changeButtonsTexts = {
+  pending: "To work",
+  working: "To Finish",
 };
 
 const TodoItem: FC<Props> = ({
@@ -23,6 +43,7 @@ const TodoItem: FC<Props> = ({
   status = themes.pending,
   onEdit,
   onDelete,
+  onChange,
 }) => {
   const { setTodoStatus } = useTodos();
 

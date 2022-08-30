@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent } from "react";
+import React, { FC, SyntheticEvent, useState } from "react";
 
 interface Props {
   name: string;
@@ -8,6 +8,7 @@ interface Props {
 }
 
 const TextArea: FC<Props> = ({ name, value, placeholder, onChange }) => {
+  const [valid, isValid] = useState(true);
   return (
     <div className="text-area-group">
       <textarea
@@ -18,7 +19,14 @@ const TextArea: FC<Props> = ({ name, value, placeholder, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e)}
+        onBlur={() => isValid(false)}
+        onFocus={() => isValid(true)}
       />
+      {name == "description" && value != "" && value.length < 20 && !valid && (
+        <p className="input-group__error">
+          Description should be at least 20 characters
+        </p>
+      )}
     </div>
   );
 };

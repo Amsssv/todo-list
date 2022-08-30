@@ -17,7 +17,7 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .input-group {
@@ -43,6 +43,11 @@ body,
   color: rgb(107 114 128);
 }
 
+.input-group__error{
+  color: rgb(239 68 68);
+  margin: 8px;
+}
+
 .text-area-group{
   position: relative;
   width: 100%;
@@ -50,6 +55,7 @@ body,
 }
 
 .text-area-group__textarea{
+  resize:none;
   font-family: Arial sans-serif;
   width: 90%;
   padding: 12px;
@@ -70,14 +76,13 @@ body,
 .todo-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+
 }
 
 .todo-item{
   padding: 10px;
   margin: 10px;
-  max-width: 90%;
   border: solid #000000;
   border-radius: 20px;
 }
@@ -108,6 +113,8 @@ body,
 }
 
 .todo-copy{
+  max-width: 100%;
+  word-wrap: break-word;
   font-family: Roboto sans-serif;
   margin: 10px 10px 5px;
 }
@@ -143,4 +150,26 @@ body,
 .save-button {
   padding: 10px 32px;
   background-color: #85ff99;
+}
+
+.app-container {
+  display: flex;
+}
+
+.sidebar {
+  min-width: 320px;
+  max-width: 70%;
+  display: flex;
+  border-right: #e9e9e9 1px solid;
+}
+
+.sidebar__resizer {
+  flex: 0 0 6px;
+  justify-self: flex-end;
+  cursor: col-resize;
+  resize: horizontal;
+}
+
+.sidebar__resizer:hover {
+  background: #c1c3c5b4;
 }

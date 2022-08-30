@@ -23,3 +23,5 @@ export type State = {
   items: Todo[];
   editingId: number | null;
 };
+
+export type TodoStatus = "pending" | "working" | "finished";

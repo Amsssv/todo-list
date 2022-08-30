@@ -3,6 +3,7 @@ import TodoItem from "./todo-item";
 import { useTodos } from "../store";
 import { Todo } from "../store/types";
 import TextField from "./text-field";
+import useDebouncedCallback from "../hooks/useDebouncedCallback";
 
 const TodoList: FC = () => {
   const {
@@ -13,18 +14,24 @@ const TodoList: FC = () => {
 
   const [search, setSearch] = useState("");
 
-  const handleSearchChange = (e: any) => {
-    setSearch(e.target.value);
-  };
+  const handleSearchChange = useDebouncedCallback(
+    (value: string) => {
+      setSearch(value);
+    },
+    300,
+    []
+  );
 
   return (
     <div className="container">
-      <TextField
-        name="search"
-        placeholder="search"
-        value={search}
-        onChange={handleSearchChange}
-      />
+      <div className="input-group">
+        <input
+          className="input-group__input"
+          defaultValue={search}
+          placeholder="search"
+          onChange={(e) => handleSearchChange(e.target.value)}
+        />
+      </div>
       <div className="todo-list">
         {items
           .filter(({ title }: Todo) =>
@@ -36,6 +43,7 @@ const TodoList: FC = () => {
               {...item}
               onEdit={editTodoItem}
               onDelete={removeTodoItem}
+              onChange={() => console.log("ddd")}
             />
           ))}
       </div>

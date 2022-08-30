@@ -6,12 +6,13 @@ import useForm from "../hooks/useForm";
 
 const AddTodoForm = () => {
   const { addTodoItem } = useTodos();
-  const { formData, handleInputChange } = useForm();
+  const { formData, handleInputChange, handleSubmitForm } = useForm();
   const { title, description } = formData;
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    addTodoItem(title, description);
+    addTodoItem(title.trim(), description.trim());
+    handleSubmitForm();
   };
 
   return (
