@@ -1,10 +1,10 @@
 html,
 body,
-#root,
-.App {
+#root{
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden
 }
 
 .container {
@@ -16,6 +16,29 @@ body,
   max-width: 70%;
   display: flex;
   border-right: #e9e9e9 1px solid;
+}
+
+.sidebar__scroll{
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.sidebar__scroll::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.sidebar__scroll::-webkit-scrollbar{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.sidebar__scroll::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
 }
 
 .sidebar__content{
@@ -32,6 +55,7 @@ body,
   justify-self: flex-end;
   cursor: col-resize;
   resize: horizontal;
+  margin-left: 4px;
 }
 
 .sidebar__resizer:hover {

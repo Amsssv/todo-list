@@ -31,7 +31,9 @@ const ResizableSidebar: FC<Props> = ({ children }) => {
       className="sidebar"
       style={{ width: `${sidebarWidth}px` }}
     >
-      <div className="sidebar__content">{children}</div>
+      <div className="sidebar__scroll">
+        <div className="sidebar__content">{children}</div>
+      </div>
       <div
         className="sidebar__resizer"
         onMouseDown={(e) => {
