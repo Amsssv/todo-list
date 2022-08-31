@@ -38,14 +38,14 @@ const TodoItem: FC<Props> = ({
       : status === Status.FINISHED
       ? "green"
       : null;
-  const todoItemClass = `todo__item todo__item--${color}`;
+  const todoItemClass = `todo-list__item todo-list__item--${color}`;
   return (
     <div className={todoItemClass}>
-      <div className="todo-header">
-        <h2 className="todo-title">{title}</h2>
+      <div className="todo-list__header">
+        <h2 className="todo-list__title">{title}</h2>
       </div>
-      <p className="todo-copy">{description}</p>
-      <div className="todo-actions">
+      <p className="todo-list__copy">{description}</p>
+      <div className="todo-list__actions">
         {status === Status.PENDING ? (
           <>
             <Button color={"blue"} submit={false} onClick={handleStart}>

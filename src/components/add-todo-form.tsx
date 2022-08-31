@@ -17,7 +17,7 @@ const AddTodoForm = () => {
   };
 
   return (
-    <form className="container" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <TextField
         value={title}
         name="title"

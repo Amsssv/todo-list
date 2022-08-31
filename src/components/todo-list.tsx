@@ -22,7 +22,7 @@ const TodoList: FC = () => {
   );
 
   return (
-    <div className="container">
+    <>
       <div className="input-group">
         <input
           className="input-group__input"
@@ -45,7 +45,7 @@ const TodoList: FC = () => {
             />
           ))}
       </div>
-    </div>
+    </>
   );
 };
 

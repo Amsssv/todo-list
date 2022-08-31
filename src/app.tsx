@@ -7,7 +7,7 @@ import ResizableSidebar from "./components/resizebale-sidebar";
 const App = () => {
   return (
     <TodoProvider>
-      <div className="app-container">
+      <div className="container">
         <ResizableSidebar>
           <TodoList />
         </ResizableSidebar>
