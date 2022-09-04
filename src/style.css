@@ -28,17 +28,26 @@ body,
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #F5F5F5;
+    visibility: hidden;
 }
 
 .sidebar__scroll::-webkit-scrollbar {
+    visibility: hidden;
     width: 6px;
     background-color: #F5F5F5;
 }
 
 .sidebar__scroll::-webkit-scrollbar-thumb {
+    visibility: hidden;
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #555;
+}
+
+.sidebar__scroll:hover::-webkit-scrollbar,
+.sidebar__scroll:hover::-webkit-scrollbar-thumb,
+.sidebar__scroll:hover::-webkit-scrollbar-track {
+    visibility: visible;
 }
 
 .sidebar__content {
