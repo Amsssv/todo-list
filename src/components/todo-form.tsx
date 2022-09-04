@@ -3,7 +3,7 @@ import { useTodos } from "../store";
 import AddTodoForm from "./add-todo-form";
 import EditTodoForm from "./edit-todo-form";
 
-const TodoForm = () => {
+const TodoFormContainer = () => {
   const {
     state: { editingId },
   } = useTodos();
@@ -11,4 +11,4 @@ const TodoForm = () => {
   return editingId ? <EditTodoForm id={editingId} /> : <AddTodoForm />;
 };
 
-export default TodoForm;
+export default TodoFormContainer;

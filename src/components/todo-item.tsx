@@ -7,7 +7,7 @@ interface Props {
   id: number;
   title: string;
   description: string;
-  status: string;
+  status: Status;
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
 }
@@ -25,48 +25,49 @@ const TodoItem: FC<Props> = ({
     setTodoStatus,
   } = useTodos();
 
-  const handleStart = () => {
-    setTodoStatus(id, title, description, Status.WORKING);
-  };
+  let color;
+  let handle;
+  let name;
 
-  const handleFinish = () => {
-    setTodoStatus(id, title, description, Status.FINISHED);
-  };
-  const color =
-    status === Status.WORKING
-      ? "blue"
-      : status === Status.FINISHED
-      ? "green"
-      : null;
-  const todoItemClass = `todo-list__item todo-list__item--${color}`;
+  switch (status) {
+    case Status.PENDING:
+      handle = () => {
+        setTodoStatus(id, title, description, Status.WORKING);
+      };
+      name = "To work";
+      break;
+    case Status.WORKING:
+      color = "blue";
+      handle = () => {
+        setTodoStatus(id, title, description, Status.FINISHED);
+      };
+      name = "Finish";
+      break;
+    case Status.FINISHED:
+      color = "green";
+  }
+
+  const classes = `todo-list__item todo-list__item--${color}`;
   return (
-    <div className={todoItemClass}>
+    <div className={classes}>
       <div className="todo-list__header">
         <h2 className="todo-list__title">{title}</h2>
       </div>
       <p className="todo-list__copy">{description}</p>
       <div className="todo-list__actions">
-        {status === Status.PENDING ? (
-          <>
-            <Button color={"blue"} submit={false} onClick={handleStart}>
-              To work
-            </Button>
-            <Button color={"yellow"} submit={false} onClick={() => onEdit(id)}>
-              Edit
-            </Button>
-          </>
-        ) : status === Status.WORKING ? (
-          <Button color={"green"} submit={false} onClick={handleFinish}>
-            Finish
-          </Button>
-        ) : null}
-        <button
-          className="button button--red"
+        <Button color={"blue"} onClick={handle}>
+          {name}
+        </Button>
+        <Button color={"yellow"} onClick={() => onEdit(id)}>
+          Edit
+        </Button>
+        <Button
+          color={"red"}
           onClick={() => onDelete(id)}
-          {...(editingId == id && { disabled: true })}
+          disabled={editingId === id}
         >
           Delete
-        </button>
+        </Button>
       </div>
     </div>
   );

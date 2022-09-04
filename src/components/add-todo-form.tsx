@@ -30,7 +30,7 @@ const AddTodoForm = () => {
         placeholder="description"
         onChange={handleInputChange}
       />
-      <Button color="green" submit={true}>
+      <Button color="green" submit>
         Save
       </Button>
     </form>

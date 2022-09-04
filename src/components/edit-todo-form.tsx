@@ -41,7 +41,7 @@ const EditTodoForm: FC<Props> = ({ id }) => {
         onChange={handleInputChange}
       />
       <div className="todo-actions">
-        <Button submit={true} color="yellow">
+        <Button submit color="yellow">
           Update
         </Button>
         <Button color="red" onClick={() => {}}>
