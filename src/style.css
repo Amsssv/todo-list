@@ -92,7 +92,7 @@ body,
     box-shadow: 6px 6px 10px 1px rgba(133, 255, 153, 0.5);
 }
 
-.todo-list__item--green .button--blue{
+.todo-list__item--green .button--blue, .todo-list__item--green .button--yellow{
     display: none;
 }
 

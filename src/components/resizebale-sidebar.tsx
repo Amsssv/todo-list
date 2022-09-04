@@ -7,15 +7,12 @@ interface Props {
 const ResizableSidebar: FC<Props> = ({ children }) => {
   const sidebarRef = useRef(null);
   const [isResizing, setIsResizing] = useState(false);
-  const [sidebarWidth, setSidebarWidth] = useState(500);
+  const [sidebarWidth, setSidebarWidth] = useState(30);
 
   useEffect(() => {
     const stopResizing = () => setIsResizing(false);
     const resize = (e: MouseEvent) => {
-      isResizing &&
-        setSidebarWidth(
-          e.clientX - sidebarRef.current.getBoundingClientRect().left
-        );
+      isResizing && setSidebarWidth(e.clientX / 10);
     };
     window.addEventListener("mousemove", resize);
     window.addEventListener("mouseup", stopResizing);
@@ -29,7 +26,7 @@ const ResizableSidebar: FC<Props> = ({ children }) => {
     <div
       ref={sidebarRef}
       className="sidebar"
-      style={{ width: `${sidebarWidth}px` }}
+      style={{ width: `${sidebarWidth}%` }}
     >
       <div className="sidebar__scroll">
         <div className="sidebar__content">{children}</div>
