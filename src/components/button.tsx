@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from "react";
 
 interface CommonProps {
+  startIcon?: ReactNode;
   children: ReactNode;
   color?: "green" | "blue" | "yellow" | "red";
   disabled?: boolean;
@@ -19,6 +20,7 @@ type ConditionalProps =
 type Props = CommonProps & ConditionalProps;
 
 const Button: FC<Props> = ({
+  startIcon,
   children,
   color = "grey",
   disabled,
@@ -33,6 +35,7 @@ const Button: FC<Props> = ({
       {...(submit && { type: "submit" })}
       {...(disabled && { disabled: true })}
     >
+      <>{startIcon}</>
       {children}
     </button>
   );

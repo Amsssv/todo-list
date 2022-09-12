@@ -2,14 +2,13 @@ import React, { FC } from "react";
 import { useTodos } from "../store";
 import { Status } from "../store/types";
 import Button from "./button";
+import Kebab from "./kebab-menu";
 
 interface Props {
   id: number;
   title: string;
   description: string;
   status: Status;
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
 }
 
 const TodoItem: FC<Props> = ({
@@ -17,25 +16,16 @@ const TodoItem: FC<Props> = ({
   title,
   description,
   status = Status.PENDING,
-  onEdit,
-  onDelete,
 }) => {
-  const {
-    state: { editingId },
-    setTodoStatus,
-  } = useTodos();
+  const { setTodoStatus } = useTodos();
 
   let color;
-  let handle;
-  let name;
+  let handle = () => {
+    setTodoStatus(id, title, description, Status.WORKING);
+  };
+  let name = "Start";
 
   switch (status) {
-    case Status.PENDING:
-      handle = () => {
-        setTodoStatus(id, title, description, Status.WORKING);
-      };
-      name = "To work";
-      break;
     case Status.WORKING:
       color = "blue";
       handle = () => {
@@ -52,21 +42,12 @@ const TodoItem: FC<Props> = ({
     <div className={classes}>
       <div className="todo-list__header">
         <h2 className="todo-list__title">{title}</h2>
+        <Kebab id={id} status={status} />
       </div>
       <p className="todo-list__copy">{description}</p>
       <div className="todo-list__actions">
         <Button color={"blue"} onClick={handle}>
           {name}
-        </Button>
-        <Button color={"yellow"} onClick={() => onEdit(id)}>
-          Edit
-        </Button>
-        <Button
-          color={"red"}
-          onClick={() => onDelete(id)}
-          disabled={editingId === id}
-        >
-          Delete
         </Button>
       </div>
     </div>

@@ -12,7 +12,7 @@ const ResizableSidebar: FC<Props> = ({ children }) => {
   useEffect(() => {
     const stopResizing = () => setIsResizing(false);
     const resize = (e: MouseEvent) => {
-      isResizing && setSidebarWidth(e.clientX / 10);
+      isResizing && setSidebarWidth(e.clientX / (window.innerWidth / 100));
     };
     window.addEventListener("mousemove", resize);
     window.addEventListener("mouseup", stopResizing);

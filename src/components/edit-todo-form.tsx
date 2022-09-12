@@ -4,6 +4,7 @@ import TextArea from "./text-area";
 import { useTodos } from "../store";
 import useForm from "../hooks/useForm";
 import Button from "./button";
+import { Status } from "../store/types";
 
 interface Props {
   id: number;
@@ -20,10 +21,11 @@ const EditTodoForm: FC<Props> = ({ id }) => {
     description: currentItem.description,
   });
   const { title, description } = formData;
+  const { status } = currentItem;
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    saveEditedTodoItem(id, title, description);
+    saveEditedTodoItem(id, title, description, status);
   };
 
   return (

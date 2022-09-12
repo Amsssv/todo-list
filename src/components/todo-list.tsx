@@ -7,8 +7,6 @@ import useDebouncedCallback from "../hooks/useDebouncedCallback";
 const TodoList: FC = () => {
   const {
     state: { items },
-    editTodoItem,
-    removeTodoItem,
   } = useTodos();
 
   const [search, setSearch] = useState("");
@@ -33,16 +31,12 @@ const TodoList: FC = () => {
       </div>
       <div className="todo-list">
         {items
+          .sort((a: Todo, b: Todo) => b.status - a.status)
           .filter(({ title }: Todo) =>
             title.toLowerCase().startsWith(search.toLowerCase())
           )
           .map((item: Todo) => (
-            <TodoItem
-              key={item.id}
-              {...item}
-              onEdit={editTodoItem}
-              onDelete={removeTodoItem}
-            />
+            <TodoItem key={item.id} {...item} />
           ))}
       </div>
     </>

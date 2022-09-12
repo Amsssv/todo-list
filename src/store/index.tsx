@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, useContext, useEffect, useReducer } from "react";
-import { State, ActionTypes, Action } from "./types";
+import { State, ActionTypes, Action, Status } from "./types";
 
 const initialState: State = {
   items: [],
@@ -82,7 +82,7 @@ const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const id = state.items.length + 1;
     dispatch({
       type: ActionTypes.ADD_ITEM,
-      payload: { id, title, description },
+      payload: { id, title, description, status: Status.PENDING },
     });
   };
 
@@ -103,11 +103,12 @@ const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const saveEditedTodoItem = (
     id: number,
     title: string,
-    description: string
+    description: string,
+    status: Status
   ) => {
     dispatch({
       type: ActionTypes.SAVE_EDITED_ITEM,
-      payload: { id, title, description },
+      payload: { id, title, description, status },
     });
   };
 
